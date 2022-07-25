@@ -1,33 +1,32 @@
 const arg = process.argv[2];
 
+const printResult = (result) => {
+  console.log(result);
+};
+
+const letterChecker = (vowel) => {
+  switch(vowel) {
+    case "a":
+      return "4";
+    case "e":
+      return "3";
+    case "o":
+      return "0";
+    case "l":
+      return "1";
+    default:
+      return vowel;
+  }
+};
+
 const obfuscate = (string) => {
   let result = "";
-  //console.log(string)
-  for (let i = 0; i < string.length; i++) {
-    // console.log('result', result);
-    // console.log(string[i])
-    if (string[i] === "a") {
-      result += "4";
-      i++;
-    }; 
-    if (string[i] === "e") {
-      //result -= string[i];
-      result += "3";
-      i++;
-    }; 
-    if (string[i] === "o") {
-      //result -= string[i];
-      result += "0";
-      i++;
-    }; 
-    if (string[i] === "l") {
-      //result -= string[i];
-      result += "1";
-      i++;
-    }; 
-    if (string[i]) result += string[i];
+
+  for (let letter of string) {
+    result += letterChecker(letter);
   }
-  console.log(result);
+
+  printResult(result);
 };
 
 obfuscate(arg);
